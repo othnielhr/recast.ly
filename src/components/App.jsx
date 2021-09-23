@@ -1,9 +1,20 @@
 import VideoList from './VideoList.js';
+import VideoPlayer from './VideoPlayer.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      currentVideo: exampleVideoData[0],
+      videoList: exampleVideoData,
+    };
+  }
+  videoListEntryClick(video) {
+    console.log(video);
+    this.setState({
+      currentVideo: video,
+    });
   }
   render() {
     return (
@@ -15,10 +26,10 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><h5><em>videoPlayer</em> view goes here</h5></div>
+            <VideoPlayer video={this.state.currentVideo} />
           </div>
           <div className="col-md-5">
-            <VideoList videos = {exampleVideoData} />
+            <VideoList onClick={this.videoListEntryClick.bind(this)} videos={this.state.videoList} />
           </div>
         </div>
       </div>
