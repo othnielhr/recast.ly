@@ -1,6 +1,7 @@
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
 import exampleVideoData from '../data/exampleVideoData.js';
+import searchYouTube from '../lib/searchYouTube.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +12,6 @@ class App extends React.Component {
     };
   }
   videoListEntryClick(video) {
-    console.log(video);
     this.setState({
       currentVideo: video,
     });
@@ -29,7 +29,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.currentVideo} />
           </div>
           <div className="col-md-5">
-            <VideoList onClick={this.videoListEntryClick.bind(this)} videos={this.state.videoList} />
+            <VideoList onClickHandler={this.videoListEntryClick.bind(this)} videos={this.state.videoList} />
           </div>
         </div>
       </div>
