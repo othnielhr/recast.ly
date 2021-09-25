@@ -1,5 +1,5 @@
 import searchYouTube from '../../src/lib/searchYouTube.js';
-import YOUTUBE_API_KEY from '../../src/config/youtube.js';
+import YOUTUBE_API_KEY from '../../src/config/config.js';
 import exampleVideoData from '../../src/data/exampleVideoData.js';
 
 var getURLSearchParams = function(url) {
@@ -71,6 +71,7 @@ describe('searchYouTube', function() {
   // Same shape means that the data should have the same keys, nested the same way as `exampleVideoData`,
   // though it will not necessarily have the same values.
   it('should GET videos with the same shape as `exampleVideoData`', function(done) {
+
     var options = {
       key: YOUTUBE_API_KEY,
       query: 'react',

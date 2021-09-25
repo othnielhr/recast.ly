@@ -9,8 +9,21 @@ class App extends React.Component {
     this.state = {
       currentVideo: exampleVideoData[0],
       videoList: exampleVideoData,
+      // currentVideo: {},
+      // videoList: []
     };
   }
+
+  componentDidMount() {
+    var self = this;
+    searchYouTube({}, function(videoList) {
+      self.setState({
+        currentVideo: videoList[0],
+        videoList: videoList
+      });
+    });
+  }
+
   videoListEntryClick(video) {
     this.setState({
       currentVideo: video,
