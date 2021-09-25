@@ -11,7 +11,8 @@ var searchYouTube = (options, callback) => {
     },
     dataType: 'json',
     data: {
-      /* youtube_api_key */youtubeApiKey: YOUTUBE_API_KEY,
+      /* eslint-disable camelcase */
+      youtube_api_key/* youtubeApiKey */: YOUTUBE_API_KEY,
       key: options.key,
       q: options.query,
       maxResults: options.max,

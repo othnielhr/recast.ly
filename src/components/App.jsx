@@ -34,10 +34,13 @@ class App extends React.Component {
   searchVideos(query) {
     var self = this;
     var options = {
+      /* eslint-disable camelcase */
+      youtube_api_key: YOUTUBE_API_KEY,
       key: API_KEY,
       max: 5,
       query: query
     };
+    setTimeout(5000);
     this.props.searchYouTube(options, function(data) {
       self.setState({
         currentVideo: data[0],
@@ -51,12 +54,13 @@ class App extends React.Component {
       currentVideo: video,
     });
   }
+
   render() {
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search searchHandler={this.searchVideos.bind(this)} />
+            <Search searchHandler={_.debounce(this.searchVideos.bind(this), 500)} />
           </div>
         </nav>
         <div className="row">
